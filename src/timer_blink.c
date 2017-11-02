@@ -5,7 +5,7 @@
 #include "msp430g2553.h"
 
 
-int led_control = 0x00;
+short int led_control = 0;
 
 void main(void) {
  
@@ -14,7 +14,7 @@ void main(void) {
   P1REN = 0x08;               // Enable pullup/pulldown from pin 1.3 (0000 1000)
   P1OUT = 0x08;               // Define pullup for the pin 1.3       (0000 1000)
 
-  CCTL0 = CCIE;               // Enable timer A comparison interuption
+  CCTL0 = CCIE;               // Enable timer A comparison interruption
   TACTL = TASSEL_2+MC_3+ID_3; // SMCLK = 1 MHz, SMCLK/8 = 125 KHz    (8 us)      
   CCR0 =  62500;              // Mode up/down: get to the value and then restart
                               // to zero, therefore each interruption occurs
@@ -27,18 +27,12 @@ void main(void) {
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void Timer_A (void) {   
   
-  // Light the LED up for 1s
-  if (led_control == 0x00) {
+  // Turn the LED on for 1s and off for 2s
+  if (led_control < 2) {
     P1OUT = P1OUT ^ 0x01;
-    led_control = 0x01;
+    led_control++;
   }
-  // Turn the LED off
-  else if (led_control == 0x01) {
-    P1OUT = P1OUT ^ 0x01;
-    led_control = 0x02;
-  }
-  // Keep the LED off for 2s
-  else if (led_control == 0x02) {
+  else {
     led_control = 0x00;
   }
   
