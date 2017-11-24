@@ -1,6 +1,6 @@
 /******************************************************************************
  *                   UNIVERSIDADE FEDERAL DE MINAS GERAIS                     *
- *                      ESCOLA DE VERÃO EM COMPUTAÇÃO                         *
+ *                         DCC008 - SOFTWARE BÁSICO                           *
  ******************************************************************************/
 #include <stdio.h>
 #include "msp430g2553.h"
