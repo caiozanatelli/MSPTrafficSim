@@ -102,7 +102,7 @@ void task1(void) {
 
     // Blink "led1" LED for 2 seconds
     P1OUT ^= led2;
-	}
+  }
 }
 
 // Blink the LED defined by the "led10" variable for 10 seconds
@@ -218,7 +218,7 @@ void task2(void) {
 // Switch the blinking time for each LED by swapping the variables "led2" and "led10"
 void task3(void) {
   uint8_t swap = 0;
-	while (1) {
+  while (1) {
     if (sw_pressed) {
       swap  = led2;
       led2  = led10;
@@ -226,7 +226,7 @@ void task3(void) {
 
       sw_pressed = 0;
     }
-	}
+  }
 }
 
 
@@ -305,7 +305,6 @@ __interrupt void Port_1(void) {
 // Specifically, this is necessary because the gcc compiler insert a push instr for the r15 reg
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void __attribute__((naked)) Timer_A (void) {
-//__interrupt void Timer_A (void) {
 
   //0 -Save Context 
   SAVE_CONTEXT();
