@@ -101,8 +101,7 @@ void task1(void) {
     __delay_cycles(33333);
 
     // Blink "led1" LED for 2 seconds
-		P1OUT ^= led2;
-
+    P1OUT ^= led2;
 	}
 }
 
@@ -212,7 +211,7 @@ void task2(void) {
     __delay_cycles(33333);
 
     // Blink "led2" LED for 10 seconds
-		P1OUT ^= led10;
+    P1OUT ^= led10;
   }
 }
 
