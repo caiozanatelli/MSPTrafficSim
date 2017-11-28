@@ -279,7 +279,6 @@ void main(void) {
 
   CCTL0  = CCIE;                   // Enable timer A comparison interruption
   TACTL  = TASSEL_2 + MC_3 + ID_3; // SMCLK = 1 MHz, SMCLK/8 = 125 KHz (8 us)      
-  //CCR0   =  62500;               // Mode up/down: get to the defined value and then restart
   CCR0   =  20833;                 // Mode up/down: get to the defined value and then restart
 
   /*initialize to first task*/
@@ -315,12 +314,12 @@ __interrupt void __attribute__((naked)) Timer_A (void) {
   stack_pointer[task_id] = temp;
   
   //2-update the task id
-	if (task_id < TOTAL_TASKS - 1) {
-		task_id++;
-	}
-	else {
-		task_id = 0;
-	}
+  if (task_id < TOTAL_TASKS - 1) {
+    task_id++;
+  }
+  else {
+    task_id = 0;
+  }
 
   //3-Save Stack pointer
   temp = stack_pointer[task_id]; 
