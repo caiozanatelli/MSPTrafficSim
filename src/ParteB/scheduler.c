@@ -77,38 +77,143 @@ volatile uint8_t sw_pressed = 0;
 
 // Blink the LED defined by the "led2" variable for 2 seconds
 void task1(void) { 
-	static uint8_t  i = 0;
-	static uint16_t j = 0;
-	
-	while (1) {				
-		for (; i < 2; i++) {
-			for (; j < 31250; j++) {
-				__no_operation();
-			}
-			j = 0;
-		}
+  while (1) {
+    // Generate delay of 2 seconds. Loops aren't used to avoid branches in asm code
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
 
-		i = 0;
-		P1OUT ^= led2; // Blink "led1" LED for 2 seconds
+    // Blink "led1" LED for 2 seconds
+		P1OUT ^= led2;
+
 	}
 }
 
 // Blink the LED defined by the "led10" variable for 10 seconds
-void task2(void) {
-	static uint8_t  i = 0;
-	static uint16_t j = 0;
-	
-	while (1) {
-		for (; i < 10; i++) {
-			for (; j < 31250; j++) {
-				__no_operation();
-			}
-			j = 0;
-		}
-		
-    i = 0;
-		P1OUT ^= led10; // Blink "led2" LED for 10 seconds
-	}
+void task2(void) {  
+  while (1) {
+    // Generate delay of 10 seconds. Loops aren't used to avoid branches in asm code
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+    __delay_cycles(33333);
+
+    // Blink "led2" LED for 10 seconds
+		P1OUT ^= led10;
+  }
 }
 
 // Switch the blinking time for each LED by swapping the variables "led2" and "led10"
@@ -142,12 +247,7 @@ uint16_t *initialise_stack(void (* func)(void), uint16_t *stack_location) {
   /*MSP430F5529 has a 20bit PC register*/
   *stack_location = (uint16_t)func; //last 16 bits will only stored. Pending 4bits will be stored with SR
   stack_location--;
-  /*refer datasheet to see how 20bit PC is stored along with SR*/
-  
-  *stack_location = DEFAULT_SR;
-  
-  //*stack_location = (((uint16_t)((uint32_t)(0xf0000 & (uint32_t)func) >> 4))| DEFAULT_SR); 
-  //stack_location--;
+  *stack_location = DEFAULT_SR;  
 
   /*leave space in stack for r4 to r15*/
   for(i = 0; i < BACKUP_REGS; i++) {
@@ -202,14 +302,19 @@ __interrupt void Port_1(void) {
 }
 
 // Routine to treat Timer interruption
+// "naked" is used to not let the compiler insert/modify instructions made in this interruption
+// Specifically, this is necessary because the gcc compiler insert a push instr for the r15 reg
 #pragma vector=TIMER0_A0_VECTOR
-__interrupt void Timer_A (void) {
+__interrupt void __attribute__((naked)) Timer_A (void) {
+//__interrupt void Timer_A (void) {
 
   //0 -Save Context 
   SAVE_CONTEXT();
 
   //1-Load Stack Pointer
   LOAD_STACK_POINTER(temp);
+  // Backup the Stack Pointer
+  stack_pointer[task_id] = temp;
   
   //2-update the task id
 	if (task_id < TOTAL_TASKS - 1) {
@@ -223,7 +328,7 @@ __interrupt void Timer_A (void) {
   temp = stack_pointer[task_id]; 
   SAVE_STACK_POINTER(temp);
 
-  //4 Load Context
+  //4-Load Context
   RESTORE_CONTEXT();
   
 }
