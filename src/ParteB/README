@@ -1,0 +1,16 @@
+*********************************************************
+                        PARTE B
+*********************************************************
+
+Nesta pasta está  localizada a implementação  relativa à 
+Parte B  do Trabalho  Prático  II da disciplina Software  
+Básico, referente  à implementação de  um escalonador de 
+tarefas.
+
+O funcionamento do escalonador em questão é detalhado  na
+especificação e na documentação deste trabalho.
+
+Por fim, o código referente a esta etapa do trabalho está
+localizado no arquivo ./scheduler.c.
+
+*********************************************************

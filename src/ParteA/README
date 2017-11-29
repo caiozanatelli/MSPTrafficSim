@@ -1,0 +1,32 @@
+*************************************************************
+                          PARTE A
+*************************************************************
+
+Nesta pasta estão  localizados as implementações  relativas à
+Parte A do Trabalho Prático II da disciplina Software Básico.
+Os tópicos que compõe esta etapa do trabalho são:
+
+-------------------------------------------------------------
+PARTE 0 - Baixar o compilador, compilar e executar códigos no
+MSP430. Isso  foi realizado em todas as etapas deste trabalho
+prático, sendo  utilizada  também  a  ferramenta  GDB para  a 
+depuração dos códigos.
+
+-------------------------------------------------------------
+
+PARTE 1 - Desenvolver um pisca-pisca utilizando o LED vermelho
+do  MSP430 através de interrupções de tempo. O LED deve  ficar
+aceso por 1  segundo e  apagado  por dois  segundos. O  código 
+para esta etapa está contido no arquivo ./interruption.c.
+
+-------------------------------------------------------------
+
+PARTE 2 - Desenvolver um simulador de um semáforo, onde o LED
+verde indica a luz verde, o LED vermelho indica a luz vermelha
+e os LEDs verde e vermelho acesos ao mesmo tempo indicam a luz
+amarela. Os tempos, bem como a descrição do funcionamento deste
+simulador  estão definidos na especificação e  na documentação 
+deste trabalho. Por  fim, o código para esta esta está contido
+no arquivo ./traffic_light.c.
+
+**************************************************************
